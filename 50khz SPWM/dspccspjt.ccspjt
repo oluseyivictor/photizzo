@@ -1,0 +1,38 @@
+[PROJECT]
+Target=dspccspjt.hex
+Processor_Text=DSPIC30F2010
+CCSVerions=5.061
+Compiler=PCD
+CCSVersion=5.061
+[Target Data]
+FileList=dspccspjt.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\dspccspjt]
+Type=4
+[mru-list]
+1=dspccspjt.c
+
+[ProjectLog]
+Days=1
+D1=01-05-2018
+D1_L=2
+D1_L1=[31585]Project Opened.
+D1_L2=[33273]Project Closed.
+
+[Opened Files]
+1=dspccspjt.c
+t1=1
+Count=3
+2=dspccspjt.h
+t2=1
+3=..\..\..\..\..\Program Files (x86)\PICC\Devices\30F2010.h
+t3=1
+[dspccspjt.c]
+Type=4
+
+[defines]
+buildcount=3
+[Units]
+Count=1
+1=dspccspjt (main)

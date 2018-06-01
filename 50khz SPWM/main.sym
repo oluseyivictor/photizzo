@@ -1,0 +1,59 @@
+W0      @SCRATCH
+W0L     _RETURN_
+W0 -W1  @DIV3232B.P1
+W0 -W1  @READ_ROM_MEMORY.P2
+W0      @delay_ms1.P3
+W0      @delay_us1.P4
+W1      @SCRATCH
+W1      @WRITE_PACKED_MEMORY.P1
+W1      @READ_PACKED_MEMORY.P2
+W2      @READ_ROM_MEMORY.P1
+W2      @WRITE_PACKED_MEMORY.P2
+W2      @READ_PACKED_MEMORY.P3
+W2 -W3  @DIV3232B.P4
+W3      @READ_ROM_MEMORY.P1
+W3      @WRITE_PACKED_MEMORY.P2
+W3      @READ_PACKED_MEMORY.P3
+F80-FFF Stack
+
+ROM Allocation:
+000100  main
+000100  @cinit1
+00010C  @cinit2
+
+Project Directory:
+    C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\
+
+Project Files:
+    main.c                                                  [01-Apr-18 16:11  CRC=56894757]
+    main.h                                                  [01-Apr-18 16:11  CRC=D8102B21]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\30F4011.h [28-Jun-16 14:02  CRC=041C9B81]
+
+Source signature=36D2A97A
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=E500
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      DSPIC30F4011
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: SIGNED: 8,16,32
+    Float,Double:   32,64
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

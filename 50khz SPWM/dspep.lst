@@ -1,0 +1,77 @@
+CCS PCD C Compiler, Version 5.061, 5967               01-May-18 09:14
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\dspep.lst
+
+               ROM used:   272 bytes (3%)
+                           Largest free fragment is 7920
+               RAM used:   128 (25%) at main() level
+                           129 (25%) worst case
+               Stack used: 0 locations
+               Stack size: 128
+
+*
+0000:  GOTO    100
+.................... #include <dspep.h> 
+.................... #include <30F2010.h> 
+.................... //////////// Standard Header file for the DSPIC30F2010 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device DSPIC30F2010 
+....................  
+.................... #list 
+....................  
+.................... #device ICSP=1 
+.................... #use delay(clock=8000000,crystal=8000000) 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES CKSFSM                   //Clock Switching is enabled, fail Safe clock monitor is enabled 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+.................... void main() 
+*
+0100:  MOV     #980,W15
+0102:  MOV     #9FF,W0
+0104:  MOV     W0,20
+0106:  NOP     
+0108:  BSET.B  81.7
+010A:  SETM    2A8
+.................... { 
+....................  
+....................  
+....................  
+.................... 	while(TRUE) 
+.................... 	{ 
+010C:  BRA     10C
+.................... 		//TODO: User Code 
+.................... 	} 
+....................  
+.................... } 
+010E:  PWRSAV  #0
+
+Configuration Fuses:
+   Word  1L: 0304   XT PR CKSFSM
+          H: 0000  
+   Word  2L: 003F   WPSB16 WPSA512 NOWDT
+          H: 0000  
+   Word  3L: 8733   PUT64 BORRES NOBROWNOUT LPOL_HIGH HPOL_HIGH NOPWMPIN MCLR
+          H: 0000  
+   Word  4L: 310F  
+          H: 0000  
+   Word  5L: 330F  
+          H: 0000  
+   Word  6L: 0007   NOWRT NOPROTECT
+          H: 0000  
+   Word  7L: C003   ICSP1 NODEBUG
+          H: 0000  

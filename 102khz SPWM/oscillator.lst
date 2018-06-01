@@ -1,0 +1,272 @@
+CCS PCH C Compiler, Version 5.061, 5967               31-Mar-18 15:02
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\102khz SPWM\oscillator.lst
+
+               ROM used:   412 bytes (1%)
+                           Largest free fragment is 32352
+               RAM used:   38 (2%) at main() level
+                           39 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0172
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  FF5,15
+003C:  MOVFF  FF6,16
+0040:  MOVFF  FF7,17
+0044:  MOVFF  00,0E
+0048:  MOVFF  01,0F
+004C:  MOVFF  02,10
+0050:  MOVFF  03,11
+0054:  BTFSS  F9D.1
+0056:  GOTO   0060
+005A:  BTFSC  F9E.1
+005C:  GOTO   00FE
+0060:  MOVFF  0E,00
+0064:  MOVFF  0F,01
+0068:  MOVFF  10,02
+006C:  MOVFF  11,03
+0070:  MOVFF  0C,FE9
+0074:  MOVFF  07,FEA
+0078:  BSF    07.7
+007A:  MOVFF  08,FE1
+007E:  MOVFF  09,FE2
+0082:  MOVFF  0A,FD9
+0086:  MOVFF  0B,FDA
+008A:  MOVFF  12,FF3
+008E:  MOVFF  13,FF4
+0092:  MOVFF  14,FFA
+0096:  MOVFF  15,FF5
+009A:  MOVFF  16,FF6
+009E:  MOVFF  17,FF7
+00A2:  MOVF   04,W
+00A4:  MOVFF  06,FE0
+00A8:  MOVFF  05,FD8
+00AC:  RETFIE 0
+.................... #include <oscillator.h> 
+.................... #include <18F2550.h> 
+.................... //////////// Standard Header file for the PIC18F2550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F2550 
+00AE:  CLRF   FF7
+00B0:  ADDLW  BE
+00B2:  MOVWF  FF6
+00B4:  MOVLW  00
+00B6:  ADDWFC FF7,F
+00B8:  TBLRD*+
+00BA:  MOVF   FF5,W
+00BC:  RETURN 0
+00BE:  DATA 00,05
+00C0:  DATA 0A,0F
+00C2:  DATA 14,18
+00C4:  DATA 1D,22
+00C6:  DATA 26,2B
+00C8:  DATA 2F,33
+00CA:  DATA 38,3C
+00CC:  DATA 3F,43
+00CE:  DATA 47,4A
+00D0:  DATA 4D,50
+00D2:  DATA 53,56
+00D4:  DATA 58,5A
+00D6:  DATA 5C,5E
+00D8:  DATA 60,61
+00DA:  DATA 62,63
+00DC:  DATA 64,64
+00DE:  DATA 64,64
+00E0:  DATA 64,63
+00E2:  DATA 62,61
+00E4:  DATA 60,5E
+00E6:  DATA 5C,5A
+00E8:  DATA 58,56
+00EA:  DATA 53,50
+00EC:  DATA 4D,4A
+00EE:  DATA 47,43
+00F0:  DATA 3F,3C
+00F2:  DATA 38,33
+00F4:  DATA 2F,2B
+00F6:  DATA 26,22
+00F8:  DATA 1D,18
+00FA:  DATA 14,0F
+00FC:  DATA 0A,05
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(clock=48MHz,crystal=16MHz) 
+....................  
+....................  
+.................... #bit B7=0xF81.7 
+.................... #bit C0=0xF82.0 
+....................  
+....................  
+....................  
+....................  
+....................  
+.................... unsigned int16 TBL_POINTER_NEW, TBL_POINTER_OLD, SET_FREQ, TBL_POINTER_SHIFT,step,DUTY_CYCLE; 
+.................... int1 Direction,start; 
+....................                    
+.................... const unsigned char sine[64]={0, 5, 10, 15, 20, 24, 29, 34, 38, 43, 47, 51, 56, 60, 63, 67, 71, 74, 77, 80, 83, 86, 88, 90, 92, 94, 96, 97, 98, 99, 100, 100, 100, 100, 100, 99, 98, 97, 96, 94, 92, 90, 88, 86, 83, 80, 77, 74, 71, 67, 63, 60, 56, 51, 47, 43, 38, 34, 29, 24, 20, 15, 10, 5}; 
+.................... #INT_TIMER2 
+.................... void timer2_isr() 
+.................... { 
+....................  TBL_POINTER_NEW=TBL_POINTER_OLD +128 ; 
+00FE:  MOVLW  80
+0100:  ADDWF  1B,W
+0102:  MOVWF  19
+0104:  MOVLW  00
+0106:  ADDWFC 1C,W
+0108:  MOVWF  1A
+....................  if (TBL_POINTER_NEW < TBL_POINTER_OLD){ 
+010A:  MOVF   1A,W
+010C:  SUBWF  1C,W
+010E:  BNC   013A
+0110:  BNZ   0118
+0112:  MOVF   1B,W
+0114:  SUBWF  19,W
+0116:  BC    013A
+....................  
+....................  
+....................            if (Direction == 0){ 
+0118:  BTFSC  25.0
+011A:  BRA    012C
+....................  
+....................            
+.................... setup_ccp1(CCP_OFF); 
+011C:  MOVLW  F0
+011E:  ANDWF  FBD,F
+.................... setup_ccp2(CCP_PWM); 
+0120:  BCF    F94.1
+0122:  BCF    F8B.1
+0124:  MOVLW  0C
+0126:  MOVWF  FBA
+....................                 
+....................               Direction = 1; 
+0128:  BSF    25.0
+....................  
+....................            } 
+012A:  BRA    013A
+....................  
+....................            else{ 
+....................            
+....................                  
+....................               
+.................... setup_ccp2(CCP_OFF); 
+012C:  MOVLW  F0
+012E:  ANDWF  FBA,F
+.................... setup_ccp1(CCP_PWM); 
+0130:  BCF    F94.2
+0132:  BCF    F8B.2
+0134:  MOVLW  0C
+0136:  MOVWF  FBD
+....................                 Direction = 0; 
+0138:  BCF    25.0
+....................  
+....................            } 
+....................  } 
+....................  // TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 11;//200     same as divide by 2048 hence 65536/2048 = 32 repeat 5 times 
+....................     TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 10;                    //  65536/16 
+013A:  CLRF   20
+013C:  RRCF   1A,W
+013E:  MOVWF  1F
+0140:  RRCF   1F,F
+0142:  MOVLW  3F
+0144:  ANDWF  1F,F
+....................      DUTY_CYCLE= TBL_POINTER_SHIFT; 
+0146:  MOVFF  20,24
+014A:  MOVFF  1F,23
+....................  
+....................   set_pwm1_duty(sine[DUTY_CYCLE]);  
+014E:  MOVFF  24,03
+0152:  MOVF   23,W
+0154:  RCALL  00AE
+0156:  MOVWF  FBE
+....................   set_pwm2_duty(sine[DUTY_CYCLE]); 
+0158:  MOVFF  24,03
+015C:  MOVF   23,W
+015E:  RCALL  00AE
+0160:  MOVWF  FBB
+....................      TBL_POINTER_OLD=TBL_POINTER_NEW; 
+0162:  MOVFF  1A,1C
+0166:  MOVFF  19,1B
+....................      clear_interrupt(INT_TIMER2); 
+016A:  BCF    F9E.1
+016C:  BCF    F9E.1
+016E:  GOTO   0060
+....................  } 
+....................  
+....................  
+.................... void main() 
+0172:  CLRF   FF8
+0174:  BCF    FD0.7
+0176:  BSF    07.7
+0178:  MOVF   FC1,W
+017A:  ANDLW  C0
+017C:  IORLW  0F
+017E:  MOVWF  FC1
+0180:  MOVLW  07
+0182:  MOVWF  FB4
+.................... { 
+.................... set_tris_b(0x00); 
+0184:  MOVLW  00
+0186:  MOVWF  F93
+....................  setup_timer_2(T2_DIV_BY_1,116,1); 
+0188:  IORLW  04
+018A:  MOVWF  FCA
+018C:  MOVLW  74
+018E:  MOVWF  FCB
+....................   
+.................... setup_ccp1(CCP_OFF); 
+0190:  MOVLW  F0
+0192:  ANDWF  FBD,F
+.................... setup_ccp2(CCP_OFF); 
+0194:  ANDWF  FBA,F
+....................  
+....................   
+.................... enable_interrupts(INT_TIMER2); 
+0196:  BSF    F9D.1
+.................... enable_interrupts(GLOBAL); 
+0198:  MOVLW  C0
+019A:  IORWF  FF2,F
+....................  
+....................   
+....................    while(TRUE) 
+....................    { 
+019C:  BRA    019C
+....................  
+....................  
+....................       //TODO: User Code 
+....................    } 
+....................  
+.................... } 
+019E:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE23   PLL4 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

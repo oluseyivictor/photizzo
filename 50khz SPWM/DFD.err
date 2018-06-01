@@ -1,0 +1,6 @@
+*** Error 24 "C:\Program Files (x86)\PICC\Devices\30F2010.h" Line 11(9,21): Unknown device type    -- Try PCD
+      1 Errors,  0 Warnings.
+Build Failed.
+      Memory usage:   ROM=4%      RAM=25% - 25%
+      0 Errors,  0 Warnings.
+Build Successful.

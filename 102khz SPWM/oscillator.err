@@ -1,0 +1,6 @@
+>>> Warning 202 "oscillator.c" Line 6(50,58): Variable never used:   SET_FREQ
+>>> Warning 202 "oscillator.c" Line 6(78,82): Variable never used:   step
+>>> Warning 202 "oscillator.c" Line 7(16,21): Variable never used:   start
+      Memory usage:   ROM=1%      RAM=2% - 2%
+      0 Errors,  3 Warnings.
+Build Successful.

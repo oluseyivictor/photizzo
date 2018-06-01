@@ -1,0 +1,97 @@
+[PROJECT]
+Target=oscillator.hex
+Processor_Text=PIC18F2550
+CCSVerions=5.061
+Compiler=PCH
+CCSVersion=5.061
+[Target Data]
+FileList=oscillator.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\SPWM\oscillator]
+Type=4
+[mru-list]
+1=oscillator.c
+
+[ProjectLog]
+Days=5
+D1=15-03-2018
+D1_L=12
+D1_L1=[50324]Project Opened.
+D1_L2=[50417]Started Editing.
+D1_L3=[50981]Stopped Editing.
+D1_L4=[51081]Started Editing.
+D1_L5=[51381]Stopped Editing.
+TotalEdit=23
+TotalDebug=0
+D1_E=11
+D1_D=0
+D1_L6=[51481]Project Closed.
+D1_L7=[66448]Project Opened.
+D1_L8=[66971]Project Closed.
+D1_L9=[66979]Project Opened.
+D1_L10=[67052]Started Editing.
+D1_L11=[67356]Stopped Editing.
+D1_L12=[67356]Project Closed.
+D2=22-03-2018
+D2_L=2
+D2_L1=[25341]Project Opened.
+D2_L2=[25344]Project Closed.
+D3=23-03-2018
+D3_L=13
+D3_L1=[26212]Project Opened.
+D3_L2=[26218]Started Editing.
+D3_L3=[26241]Stopped Editing.
+D3_E=8
+D3_D=0
+D3_L4=[26241]Project Closed.
+D3_L5=[26255]Project Opened.
+D3_L6=[26259]Started Editing.
+D3_L7=[26925]Stopped Editing.
+D3_L8=[27209]Project Closed.
+D3_L9=[29526]Project Opened.
+D3_L10=[29529]Started Editing.
+D3_L11=[29829]Stopped Editing.
+D3_L12=[29981]Project Opened.
+D3_L13=[29988]Project Closed.
+D4=31-03-2018
+D4_L=18
+D4_L1=[35314]Project Opened.
+D4_L2=[35319]Started Editing.
+D4_L3=[35336]Stopped Editing.
+D4_E=4
+D4_D=0
+D4_L4=[35336]Project Closed.
+D4_L5=[35340]Project Opened.
+D4_L6=[37770]Project Closed.
+D4_L7=[42682]Project Opened.
+D4_L8=[42689]Project Closed.
+D4_L9=[49747]Project Opened.
+D4_L10=[49826]Started Editing.
+D4_L11=[49865]Stopped Editing.
+D4_L12=[49865]Project Closed.
+D4_L13=[49875]Project Opened.
+D4_L14=[53749]Project Closed.
+D4_L15=[54013]Project Opened.
+D4_L16=[54050]Started Editing.
+D4_L17=[54443]Stopped Editing.
+D4_L18=[55479]Project Closed.
+D5=09-04-2018
+D5_L=2
+D5_L1=[4998]Project Opened.
+D5_L2=[5068]Project Closed.
+
+[Opened Files]
+1=oscillator.c
+t1=1
+Count=2
+2=oscillator.h
+t2=1
+[oscillator.c]
+Type=4
+
+[defines]
+buildcount=16
+[Units]
+Count=1
+1=oscillator (main)

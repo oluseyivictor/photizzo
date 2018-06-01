@@ -1,0 +1,6 @@
+ÀÄoscillator
+   ÃÄMAIN  0/46  Ram=0
+   ³  ÀÄ@cinit1  (Inline)  Ram=0
+   ÀÄtimer2_isr  0/116  Ram=1
+      ÃÄ@const624  0/80  Ram=0
+      ÀÄ@const624  0/80  Ram=0

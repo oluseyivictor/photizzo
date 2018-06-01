@@ -1,0 +1,46 @@
+
+ROM used:   272/8192 (3%)
+            272/8192 (3%) including unused fragments
+
+            0.3 Average locations per line
+            136.0 Average locations per statement
+
+RAM used:   128/512 (25%) at main() level
+            129/512 (25%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 128
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   15     2 100  dspep.c
+   11     0   0  dspep.h
+  805     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\30F2010.h
+----- -----
+  831     2 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     16   3    0     14  0.8  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              2
+    Comments                134
+    Volume (V)              16
+    Difficulty (D)          0.5
+    Effort to implement (E) 8
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    106
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-000FE   252  0  
+00100-01FFE    16  7920  
+
+
+

@@ -1,0 +1,98 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01A TBL_POINTER_NEW
+01B-01C TBL_POINTER_OLD
+01D-01E SET_FREQ
+01F-020 TBL_POINTER_SHIFT
+021-022 step
+023-024 DUTY_CYCLE
+025.0   Direction
+025.1   start
+026     timer2_isr.@SCRATCH1
+F81.7   B7
+F82.0   C0
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0000AE  sine.call
+0000BE  sine.data
+0000FE  timer2_isr
+000172  MAIN
+000172  @cinit1
+000184  @cinit2
+
+Project Directory:
+    C:\Users\OLUSEYI\Desktop\PHOTIZZO\102khz SPWM\
+
+Project Files:
+    oscillator.c                                            [31-Mar-18 15:02  CRC=31A0170B]
+    oscillator.h                                            [31-Mar-18 09:48  CRC=00000000]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F2550.h [28-Jun-16 13:59  CRC=634C93A3]
+
+Source signature=F8393E51
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=8354
+
+Units:
+    oscillator (main)
+
+Compiler Settings:
+    Processor:      PIC18F2550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   oscillator.xsym
+    Errors:      oscillator.err
+    Ext Symbols: oscillator.esym
+    INHX32:      oscillator.hex
+    Symbols:     oscillator.sym
+    List:        oscillator.lst
+    Debug/COFF:  oscillator.cof
+    Project:     oscillator.ccspjt
+    Call Tree:   oscillator.tre
+    Statistics:  oscillator.STA

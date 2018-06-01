@@ -1,0 +1,40 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=DSPIC30F4011
+CCSVerions=5.061
+Compiler=PCD
+CCSVersion=5.061
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\main]
+Type=4
+[mru-list]
+1=main.c
+
+[ProjectLog]
+Days=2
+D1=01-04-2018
+D1_L=2
+D1_L1=[58281]Project Opened.
+D1_L2=[58507]Project Closed.
+D2=13-04-2018
+D2_L=2
+D2_L1=[29396]Project Opened.
+D2_L2=[29423]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=2
+2=..\..\..\..\..\Program Files (x86)\PICC\Devices\30F4011.h
+t2=1
+[main.c]
+Type=4
+[Units]
+Count=1
+1=main (main)
+
+[defines]
+buildcount=1

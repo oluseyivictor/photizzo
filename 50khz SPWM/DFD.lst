@@ -1,0 +1,99 @@
+CCS PCD C Compiler, Version 5.061, 5967               29-May-18 11:42
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\DFD.lst
+
+               ROM used:   308 bytes (4%)
+                           Largest free fragment is 7884
+               RAM used:   128 (25%) at main() level
+                           129 (25%) worst case
+               Stack used: 2 locations
+               Stack size: 128
+
+*
+0000:  GOTO    110
+.................... #include <DFD.h> 
+.................... #include <30F2010.h> 
+.................... //////////// Standard Header file for the DSPIC30F2010 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device DSPIC30F2010 
+....................  
+.................... #list 
+....................  
+.................... #device ICSP=1 
+.................... #use delay(crystal=20000000) 
+*
+0100:  CP0     W0
+0102:  BTSC.B  42.1
+0104:  BRA     10E
+0106:  REPEAT  #1383
+0108:  NOP     
+010A:  DEC     W0,W0
+010C:  BRA     NZ,106
+010E:  RETURN  
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES CKSFSM                	//Clock Switching is enabled, fail Safe clock monitor is enabled 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+....................  
+....................  
+.................... #define LED PIN_B5 
+.................... #define DELAY 1000 
+....................  
+....................  
+....................  
+....................  
+.................... void main() 
+0110:  MOV     #980,W15
+0112:  MOV     #9FF,W0
+0114:  MOV     W0,20
+0116:  NOP     
+0118:  BSET.B  81.7
+011A:  SETM    2A8
+.................... { 
+....................  
+....................  
+....................  
+.................... 	//Example blinking LED program 
+.................... 	while(true) 
+.................... 	{ 
+.................... 		output_low(LED); 
+011C:  BCLR.B  2C6.5
+011E:  BCLR.B  2CA.5
+.................... 		delay_ms(DELAY); 
+0120:  MOV     #3E8,W0
+0122:  CALL    100
+.................... 		output_high(LED); 
+0126:  BCLR.B  2C6.5
+0128:  BSET.B  2CA.5
+.................... 		delay_ms(DELAY); 
+012A:  MOV     #3E8,W0
+012C:  CALL    100
+0130:  BRA     11C
+.................... 	} 
+....................  
+.................... } 
+0132:  PWRSAV  #0
+
+Configuration Fuses:
+   Word  1L: 0302   HS PR CKSFSM
+          H: 0000  
+   Word  2L: 003F   WPSB16 WPSA512 NOWDT
+          H: 0000  
+   Word  3L: 8733   PUT64 BORRES NOBROWNOUT LPOL_HIGH HPOL_HIGH NOPWMPIN MCLR
+          H: 0000  
+   Word  4L: 310F  
+          H: 0000  
+   Word  5L: 330F  
+          H: 0000  
+   Word  6L: 0007   NOWRT NOPROTECT
+          H: 0000  
+   Word  7L: C003   ICSP1 NODEBUG
+          H: 0000  

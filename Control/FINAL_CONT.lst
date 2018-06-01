@@ -1,0 +1,415 @@
+CCS PCM C Compiler, Version 5.061, 5967               01-May-18 02:46
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\Control\FINAL_CONT.lst
+
+               ROM used:   194 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   82 (22%) at main() level
+                           83 (23%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   019
+0003:  NOP
+.................... #include <FINAL_CONT.h> 
+....................  
+.................... #include <16F876A.h> 
+.................... //////////// Standard Header file for the PIC16F876A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F876A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(crystal=16000000) 
+0004:  MOVLW  6D
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  05
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  2E
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... //#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=PORT1) 
+....................  
+.................... #bit BUTTON=0x006.0 
+.................... #bit BUZZER=0x007.5 
+.................... #bit POWER=0x007.0 
+.................... #bit FAN1=0x007.1 
+.................... #bit FAN2=0x007.2 
+.................... #bit OVERLOAD=0x006.7 
+.................... #bit BATT_LOW=0x006.6 
+....................  
+.................... //#include <math.h> 
+....................  
+.................... #define BUFFER_SIZE 32 
+.................... BYTE buffer[BUFFER_SIZE]; 
+.................... BYTE next_in = 0; 
+.................... BYTE next_out = 0; 
+.................... INT1 write,state; 
+.................... unsigned int16 value[5]; 
+.................... unsigned int8 i,j; 
+.................... unsigned int16 readValue ,count;         //value read from the sensor 
+....................  
+.................... //unsigned int mVperAmp = 66; // use 100 for 20A Module and 66 for 30A Module 
+....................   
+.................... float Voltage = 0; 
+.................... float VRMS = 0; 
+.................... float AmpsRMS = 0; 
+.................... float Boost_output, Inverter_output; 
+.................... int1 batt_status, load_status; 
+.................... float Data; 
+....................  
+.................... /* 
+.................... #int_rda 
+.................... void serial_isr() { 
+....................    int t; 
+....................  
+....................    buffer[next_in]=getc(); 
+....................    t=next_in; 
+....................    next_in=(next_in+1) % BUFFER_SIZE; 
+....................    if(next_in==next_out) 
+....................      next_in=t;           // Buffer full !! 
+....................      write=1; 
+.................... } 
+....................  
+....................  
+....................  
+.................... float getVPP() 
+.................... { 
+....................   float result; 
+....................  
+....................    
+....................   readValue = read_adc(); 
+....................   Voltage = (readValue * 5.0)/1024; 
+....................   //result = Voltage * 0.707 
+....................   result = Voltage; 
+....................    
+....................   return result; 
+....................    } 
+....................  
+....................  
+....................  
+.................... void get_sample() 
+.................... { 
+....................  
+.................... AmpsRMS = (value[0]*5.0)/1024; 
+.................... Voltage = (value[2]*5.0)/1024; 
+.................... VRMS = AmpsRMS * 1.4 ; 
+.................... Boost_output = value[4] / 2.8; 
+.................... Inverter_output = Voltage * 55; 
+.................... Data = VRMS * Inverter_output; 
+.................... } 
+....................  
+....................  
+.................... void read()                   //fuction read input analog value 
+.................... { 
+.................... j=1;                                    // A0   ACS SENSOR 
+.................... for(i=0; i<5; i++)                      //A1  NTC TEMP 
+.................... {                                        //A2   BOOST VOLTAGE 
+....................  value[i] = Read_adc();                   //A3   NTC TEMP 
+....................  set_adc_channel(j);                     //A4   ---- 
+.................... delay_us(100);                          //A5   INVERTER VOLTAGE 
+....................  //Read_ADC(ADC_START_ONLY); 
+....................  j++; 
+....................  if (j==5) j=0; 
+.................... while (!adc_done()); 
+.................... } 
+.................... get_sample(); 
+.................... } 
+....................  
+....................  
+....................  
+.................... void write_status() 
+.................... { 
+.................... if (write == 1) 
+....................         {  
+....................         delay_ms(50); 
+....................         //get_sample(); 
+....................         printf("%f,%lu,%lu,%f,%f,%u,%u;\n\r", AmpsRMS,value[1],value[3],Boost_output,Inverter_output,batt_status,load_status); 
+....................   
+....................         write = 0; 
+....................         } 
+.................... } 
+....................  
+.................... */ 
+.................... void main(){ 
+0019:  MOVF   03,W
+001A:  ANDLW  1F
+001B:  MOVWF  03
+001C:  CLRF   40
+001D:  CLRF   41
+001E:  CLRF   56
+001F:  CLRF   55
+0020:  CLRF   54
+0021:  CLRF   53
+0022:  CLRF   5A
+0023:  CLRF   59
+0024:  CLRF   58
+0025:  CLRF   57
+0026:  CLRF   5E
+0027:  CLRF   5D
+0028:  CLRF   5C
+0029:  CLRF   5B
+002A:  MOVLW  FF
+002B:  MOVWF  6B
+002C:  BSF    03.5
+002D:  BSF    1F.0
+002E:  BSF    1F.1
+002F:  BSF    1F.2
+0030:  BCF    1F.3
+0031:  MOVLW  07
+0032:  MOVWF  1C
+0033:  BCF    03.7
+.................... set_tris_B(0xff); 
+0034:  MOVLW  FF
+0035:  MOVWF  06
+.................... set_tris_A(0xFF); 
+0036:  MOVWF  05
+.................... set_tris_c(0x80); 
+0037:  MOVLW  80
+0038:  MOVWF  07
+0039:  BCF    03.5
+003A:  MOVWF  6B
+.................... //set_tris_c(0x00); 
+.................... state = 1; 
+003B:  BSF    42.1
+.................... Data = 0; 
+003C:  CLRF   6A
+003D:  CLRF   69
+003E:  CLRF   68
+003F:  CLRF   67
+.................... write = 0; 
+0040:  BCF    42.0
+.................... count = 0; 
+0041:  CLRF   52
+0042:  CLRF   51
+.................... POWER = 1; 
+0043:  BSF    07.0
+.................... batt_status=load_status=0; 
+0044:  BCF    42.3
+0045:  BCF    42.2
+....................  
+.................... //setup_adc_ports(ALL_ANALOG); 
+.................... //setup_adc(ADC_CLOCK_DIV_32); 
+.................... setup_adc(ADC_CLOCK_INTERNAL); // ADC clock 
+0046:  BSF    03.5
+0047:  BCF    1F.6
+0048:  BCF    03.5
+0049:  BSF    1F.6
+004A:  BSF    1F.7
+004B:  BSF    03.5
+004C:  BSF    1F.7
+004D:  BCF    03.5
+004E:  BSF    1F.0
+.................... setup_adc_ports(AN0); // Input combination 
+004F:  BSF    03.5
+0050:  BCF    1F.0
+0051:  BSF    1F.1
+0052:  BSF    1F.2
+0053:  BSF    1F.3
+.................... set_adc_channel(0); 
+0054:  MOVLW  00
+0055:  MOVWF  78
+0056:  BCF    03.5
+0057:  MOVF   1F,W
+0058:  ANDLW  C7
+0059:  IORWF  78,W
+005A:  MOVWF  1F
+....................  
+.................... //enable_interrupts(int_rda); 
+.................... //enable_interrupts(global); 
+....................  
+....................  delay_ms(10); 
+005B:  MOVLW  0A
+005C:  MOVWF  6D
+005D:  CALL   004
+....................   
+....................     
+....................  BUZZER = 1; 
+005E:  BSF    07.5
+....................  delay_ms(2000); 
+005F:  MOVLW  08
+0060:  MOVWF  6C
+0061:  MOVLW  FA
+0062:  MOVWF  6D
+0063:  CALL   004
+0064:  DECFSZ 6C,F
+0065:  GOTO   061
+....................  BUZZER = 0; 
+0066:  BCF    07.5
+....................    
+....................   OUTPUT_C(0X00); 
+0067:  MOVLW  00
+0068:  MOVWF  6B
+0069:  BSF    03.5
+006A:  CLRF   07
+006B:  BCF    03.5
+006C:  CLRF   07
+....................  
+....................    while (TRUE) { 
+....................     
+....................    POWER = state; 
+006D:  BTFSS  42.1
+006E:  BCF    07.0
+006F:  BTFSC  42.1
+0070:  BSF    07.0
+....................  
+.................... //   read(); 
+.................... readValue = read_adc(); 
+0071:  BSF    1F.2
+0072:  BTFSC  1F.2
+0073:  GOTO   072
+0074:  BSF    03.5
+0075:  MOVF   1E,W
+0076:  BCF    03.5
+0077:  MOVWF  4F
+0078:  MOVF   1E,W
+0079:  MOVWF  50
+....................  
+.................... delay_ms(100); 
+007A:  MOVLW  64
+007B:  MOVWF  6D
+007C:  CALL   004
+....................    
+....................   // if ( (Data > 600) && (Data < 800) ) 
+....................    
+....................    if  ((readValue > 550 ) && (readValue < 662) ) 
+007D:  MOVF   50,W
+007E:  SUBLW  01
+007F:  BTFSC  03.0
+0080:  GOTO   0A2
+0081:  XORLW  FF
+0082:  BTFSS  03.2
+0083:  GOTO   088
+0084:  MOVF   4F,W
+0085:  SUBLW  26
+0086:  BTFSC  03.0
+0087:  GOTO   0A2
+0088:  MOVF   50,W
+0089:  SUBLW  02
+008A:  BTFSS  03.0
+008B:  GOTO   0A2
+008C:  BTFSS  03.2
+008D:  GOTO   092
+008E:  MOVF   4F,W
+008F:  SUBLW  95
+0090:  BTFSS  03.0
+0091:  GOTO   0A2
+....................    { 
+....................  
+....................   
+....................  BUZZER = 1; 
+0092:  BSF    07.5
+....................  //delay_ms(5000); 
+....................  count++; 
+0093:  INCF   51,F
+0094:  BTFSC  03.2
+0095:  INCF   52,F
+....................  if (count>= 50) 
+0096:  MOVF   52,F
+0097:  BTFSS  03.2
+0098:  GOTO   09D
+0099:  MOVF   51,W
+009A:  SUBLW  31
+009B:  BTFSC  03.0
+009C:  GOTO   0A1
+....................  { 
+....................   state = 1; 
+009D:  BSF    42.1
+....................  BUZZER = 0; 
+009E:  BCF    07.5
+....................  count = 0; 
+009F:  CLRF   52
+00A0:  CLRF   51
+....................  } 
+....................   }  
+00A1:  GOTO   0B5
+.................... else if (readValue > 662 ) 
+00A2:  MOVF   50,W
+00A3:  SUBLW  01
+00A4:  BTFSC  03.0
+00A5:  GOTO   0B2
+00A6:  XORLW  FF
+00A7:  BTFSS  03.2
+00A8:  GOTO   0AD
+00A9:  MOVF   4F,W
+00AA:  SUBLW  96
+00AB:  BTFSC  03.0
+00AC:  GOTO   0B2
+.................... { 
+.................... POWER = 1;  
+00AD:  BSF    07.0
+.................... state = 1; 
+00AE:  BSF    42.1
+.................... count = 0; 
+00AF:  CLRF   52
+00B0:  CLRF   51
+.................... } 
+00B1:  GOTO   0B5
+.................... else 
+.................... { 
+.................... count= 0; 
+00B2:  CLRF   52
+00B3:  CLRF   51
+....................  BUZZER = 0; 
+00B4:  BCF    07.5
+.................... } 
+....................   
+....................  
+.................... if (BUTTON == 1)                      // take to interrupt 
+00B5:  BTFSS  06.0
+00B6:  GOTO   0C0
+....................    { 
+....................    delay_ms(100); 
+00B7:  MOVLW  64
+00B8:  MOVWF  6D
+00B9:  CALL   004
+....................     if (BUTTON == 1) 
+00BA:  BTFSS  06.0
+00BB:  GOTO   0C0
+....................     { 
+....................     state=~state; 
+00BC:  MOVLW  02
+00BD:  XORWF  42,F
+....................      while (BUTTON == 1) ; 
+00BE:  BTFSC  06.0
+00BF:  GOTO   0BE
+....................     } 
+....................    } 
+00C0:  GOTO   06D
+....................     
+....................  
+....................    
+....................          
+....................    }  
+....................  
+.................... } 
+00C1:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

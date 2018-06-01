@@ -1,0 +1,50 @@
+[PROJECT]
+Target=dspep.hex
+Processor_Text=DSPIC30F2010
+CCSVerions=5.061
+Compiler=PCD
+CCSVersion=5.061
+[Target Data]
+FileList=dspep.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\dspep]
+Type=4
+[mru-list]
+1=dspep.c
+
+[ProjectLog]
+Days=3
+D1=01-05-2018
+D1_L=4
+D1_L1=[33273]Project Opened.
+D1_L2=[33282]Started Editing.
+D1_L3=[36227]Stopped Editing.
+TotalEdit=45
+TotalDebug=0
+D1_E=45
+D1_D=0
+D1_L4=[37169]Project Closed.
+D2=02-05-2018
+D2_L=2
+D2_L1=[22533]Project Opened.
+D2_L2=[22541]Project Closed.
+D3=07-05-2018
+D3_L=2
+D3_L1=[9560]Project Opened.
+D3_L2=[9695]Project Closed.
+
+[Opened Files]
+1=dspep.c
+t1=1
+Count=2
+2=dspep.h
+t2=1
+[dspep.c]
+Type=4
+
+[defines]
+buildcount=2
+[Units]
+Count=1
+1=dspep (main)

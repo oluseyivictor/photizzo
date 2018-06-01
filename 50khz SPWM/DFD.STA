@@ -1,0 +1,47 @@
+
+ROM used:   308/8192 (4%)
+            308/8192 (4%) including unused fragments
+
+            0.4 Average locations per line
+            51.3 Average locations per statement
+
+RAM used:   128/512 (25%) at main() level
+            129/512 (25%) worst case
+
+Stack used: 2 worst case (2 in main + 0 for interrupts)
+Stack size: 128
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   19     6 100  DFD.c
+   13     0   0  DFD.h
+  805     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\30F2010.h
+----- -----
+  837     6 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     16   3    2             @delay_ms1
+0     36   6    0     86  1.6  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              6
+    Comments                134
+    Volume (V)              90
+    Difficulty (D)          1.4
+    Effort to implement (E) 125
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    79
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-000FE   252  0  
+00100-01FFE    52  7884  
+
+
+

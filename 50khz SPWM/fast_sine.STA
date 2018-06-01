@@ -1,0 +1,49 @@
+
+ROM used:   1494/32768 (5%)
+            1494/32768 (5%) including unused fragments
+
+            1.7 Average locations per line
+            57.5 Average locations per statement
+
+RAM used:   38/2048 (2%) at main() level
+            40/2048 (2%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   82    26 100  fast_sine.c
+    8     0   0  fast_sine.h
+  779     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F2550.h
+----- -----
+  869    26 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0   1038  35    0             @const624
+0    240   8    2    422  5.2  timer2_isr
+0     46   2    0    152  2.2  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              26
+    Comments                149
+    Volume (V)              676
+    Difficulty (D)          7.1
+    Effort to implement (E) 4821
+    Time to implement (T)   4 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    135
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000AC   166  0  
+000AE-07FFE  1324  31270  
+
+
+

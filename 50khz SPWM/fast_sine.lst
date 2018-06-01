@@ -1,0 +1,820 @@
+CCS PCH C Compiler, Version 5.061, 5967               16-May-18 16:08
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\fast_sine.lst
+
+               ROM used:   1494 bytes (5%)
+                           Largest free fragment is 31270
+               RAM used:   38 (2%) at main() level
+                           40 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   05AC
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  FF5,15
+003C:  MOVFF  FF6,16
+0040:  MOVFF  FF7,17
+0044:  MOVFF  00,0E
+0048:  MOVFF  01,0F
+004C:  MOVFF  02,10
+0050:  MOVFF  03,11
+0054:  BTFSS  F9D.1
+0056:  GOTO   0060
+005A:  BTFSC  F9E.1
+005C:  GOTO   04BC
+0060:  MOVFF  0E,00
+0064:  MOVFF  0F,01
+0068:  MOVFF  10,02
+006C:  MOVFF  11,03
+0070:  MOVFF  0C,FE9
+0074:  MOVFF  07,FEA
+0078:  BSF    07.7
+007A:  MOVFF  08,FE1
+007E:  MOVFF  09,FE2
+0082:  MOVFF  0A,FD9
+0086:  MOVFF  0B,FDA
+008A:  MOVFF  12,FF3
+008E:  MOVFF  13,FF4
+0092:  MOVFF  14,FFA
+0096:  MOVFF  15,FF5
+009A:  MOVFF  16,FF6
+009E:  MOVFF  17,FF7
+00A2:  MOVF   04,W
+00A4:  MOVFF  06,FE0
+00A8:  MOVFF  05,FD8
+00AC:  RETFIE 0
+.................... #include <fast_sine.h> 
+.................... #include <18F2550.h> 
+.................... //////////// Standard Header file for the PIC18F2550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F2550 
+00AE:  ADDLW  BC
+00B0:  MOVWF  FF6
+00B2:  MOVLW  00
+00B4:  ADDWFC FF7,F
+00B6:  TBLRD*+
+00B8:  MOVF   FF5,W
+00BA:  RETURN 0
+00BC:  DATA 00,00
+00BE:  DATA 00,00
+00C0:  DATA 00,00
+00C2:  DATA 00,00
+00C4:  DATA 00,00
+00C6:  DATA 00,00
+00C8:  DATA 05,00
+00CA:  DATA 0B,00
+00CC:  DATA 10,00
+00CE:  DATA 15,00
+00D0:  DATA 1B,00
+00D2:  DATA 20,00
+00D4:  DATA 25,00
+00D6:  DATA 2B,00
+00D8:  DATA 30,00
+00DA:  DATA 35,00
+00DC:  DATA 3B,00
+00DE:  DATA 40,00
+00E0:  DATA 45,00
+00E2:  DATA 4B,00
+00E4:  DATA 50,00
+00E6:  DATA 55,00
+00E8:  DATA 5A,00
+00EA:  DATA 60,00
+00EC:  DATA 65,00
+00EE:  DATA 6A,00
+00F0:  DATA 70,00
+00F2:  DATA 75,00
+00F4:  DATA 7A,00
+00F6:  DATA 7F,00
+00F8:  DATA 85,00
+00FA:  DATA 8A,00
+00FC:  DATA 8F,00
+00FE:  DATA 94,00
+0100:  DATA 9A,00
+0102:  DATA 9F,00
+0104:  DATA A4,00
+0106:  DATA A9,00
+0108:  DATA AF,00
+010A:  DATA B4,00
+010C:  DATA B9,00
+010E:  DATA BE,00
+0110:  DATA C3,00
+0112:  DATA C9,00
+0114:  DATA CE,00
+0116:  DATA D3,00
+0118:  DATA D8,00
+011A:  DATA DD,00
+011C:  DATA E2,00
+011E:  DATA E8,00
+0120:  DATA ED,00
+0122:  DATA F2,00
+0124:  DATA F7,00
+0126:  DATA FC,00
+0128:  DATA 01,01
+012A:  DATA 06,01
+012C:  DATA 0B,01
+012E:  DATA 10,01
+0130:  DATA 15,01
+0132:  DATA 1A,01
+0134:  DATA 1F,01
+0136:  DATA 24,01
+0138:  DATA 29,01
+013A:  DATA 2E,01
+013C:  DATA 33,01
+013E:  DATA 38,01
+0140:  DATA 3D,01
+0142:  DATA 42,01
+0144:  DATA 47,01
+0146:  DATA 4C,01
+0148:  DATA 51,01
+014A:  DATA 56,01
+014C:  DATA 5B,01
+014E:  DATA 60,01
+0150:  DATA 64,01
+0152:  DATA 69,01
+0154:  DATA 6E,01
+0156:  DATA 73,01
+0158:  DATA 78,01
+015A:  DATA 7C,01
+015C:  DATA 81,01
+015E:  DATA 86,01
+0160:  DATA 8B,01
+0162:  DATA 8F,01
+0164:  DATA 94,01
+0166:  DATA 99,01
+0168:  DATA 9D,01
+016A:  DATA A2,01
+016C:  DATA A7,01
+016E:  DATA AB,01
+0170:  DATA B0,01
+0172:  DATA B4,01
+0174:  DATA B9,01
+0176:  DATA BE,01
+0178:  DATA C2,01
+017A:  DATA C7,01
+017C:  DATA CB,01
+017E:  DATA D0,01
+0180:  DATA D4,01
+0182:  DATA D9,01
+0184:  DATA DD,01
+0186:  DATA E1,01
+0188:  DATA E6,01
+018A:  DATA EA,01
+018C:  DATA EE,01
+018E:  DATA F3,01
+0190:  DATA F7,01
+0192:  DATA FB,01
+0194:  DATA 00,02
+0196:  DATA 04,02
+0198:  DATA 08,02
+019A:  DATA 0C,02
+019C:  DATA 10,02
+019E:  DATA 15,02
+01A0:  DATA 19,02
+01A2:  DATA 1D,02
+01A4:  DATA 21,02
+01A6:  DATA 25,02
+01A8:  DATA 29,02
+01AA:  DATA 2D,02
+01AC:  DATA 31,02
+01AE:  DATA 35,02
+01B0:  DATA 39,02
+01B2:  DATA 3D,02
+01B4:  DATA 41,02
+01B6:  DATA 45,02
+01B8:  DATA 49,02
+01BA:  DATA 4D,02
+01BC:  DATA 51,02
+01BE:  DATA 54,02
+01C0:  DATA 58,02
+01C2:  DATA 5C,02
+01C4:  DATA 60,02
+01C6:  DATA 63,02
+01C8:  DATA 67,02
+01CA:  DATA 6B,02
+01CC:  DATA 6E,02
+01CE:  DATA 72,02
+01D0:  DATA 76,02
+01D2:  DATA 79,02
+01D4:  DATA 7D,02
+01D6:  DATA 80,02
+01D8:  DATA 84,02
+01DA:  DATA 87,02
+01DC:  DATA 8B,02
+01DE:  DATA 8E,02
+01E0:  DATA 91,02
+01E2:  DATA 95,02
+01E4:  DATA 98,02
+01E6:  DATA 9B,02
+01E8:  DATA 9F,02
+01EA:  DATA A2,02
+01EC:  DATA A5,02
+01EE:  DATA A8,02
+01F0:  DATA AC,02
+01F2:  DATA AF,02
+01F4:  DATA B2,02
+01F6:  DATA B5,02
+01F8:  DATA B8,02
+01FA:  DATA BB,02
+01FC:  DATA BE,02
+01FE:  DATA C1,02
+0200:  DATA C4,02
+0202:  DATA C7,02
+0204:  DATA CA,02
+0206:  DATA CD,02
+0208:  DATA D0,02
+020A:  DATA D2,02
+020C:  DATA D5,02
+020E:  DATA D8,02
+0210:  DATA DB,02
+0212:  DATA DD,02
+0214:  DATA E0,02
+0216:  DATA E3,02
+0218:  DATA E5,02
+021A:  DATA E8,02
+021C:  DATA EB,02
+021E:  DATA ED,02
+0220:  DATA F0,02
+0222:  DATA F2,02
+0224:  DATA F5,02
+0226:  DATA F7,02
+0228:  DATA F9,02
+022A:  DATA FC,02
+022C:  DATA FE,02
+022E:  DATA 00,03
+0230:  DATA 03,03
+0232:  DATA 05,03
+0234:  DATA 07,03
+0236:  DATA 09,03
+0238:  DATA 0B,03
+023A:  DATA 0D,03
+023C:  DATA 10,03
+023E:  DATA 12,03
+0240:  DATA 14,03
+0242:  DATA 16,03
+0244:  DATA 18,03
+0246:  DATA 19,03
+0248:  DATA 1B,03
+024A:  DATA 1D,03
+024C:  DATA 1F,03
+024E:  DATA 21,03
+0250:  DATA 23,03
+0252:  DATA 24,03
+0254:  DATA 26,03
+0256:  DATA 28,03
+0258:  DATA 29,03
+025A:  DATA 2B,03
+025C:  DATA 2D,03
+025E:  DATA 2E,03
+0260:  DATA 30,03
+0262:  DATA 31,03
+0264:  DATA 33,03
+0266:  DATA 34,03
+0268:  DATA 35,03
+026A:  DATA 37,03
+026C:  DATA 38,03
+026E:  DATA 39,03
+0270:  DATA 3B,03
+0272:  DATA 3C,03
+0274:  DATA 3D,03
+0276:  DATA 3E,03
+0278:  DATA 3F,03
+027A:  DATA 40,03
+027C:  DATA 41,03
+027E:  DATA 43,03
+0280:  DATA 43,03
+0282:  DATA 44,03
+0284:  DATA 45,03
+0286:  DATA 46,03
+0288:  DATA 47,03
+028A:  DATA 48,03
+028C:  DATA 49,03
+028E:  DATA 4A,03
+0290:  DATA 4A,03
+0292:  DATA 4B,03
+0294:  DATA 4C,03
+0296:  DATA 4C,03
+0298:  DATA 4D,03
+029A:  DATA 4D,03
+029C:  DATA 4E,03
+029E:  DATA 4E,03
+02A0:  DATA 4F,03
+02A2:  DATA 4F,03
+02A4:  DATA 50,03
+02A6:  DATA 50,03
+02A8:  DATA 50,03
+02AA:  DATA 51,03
+02AC:  DATA 51,03
+02AE:  DATA 51,03
+02B0:  DATA 51,03
+02B2:  DATA 51,03
+02B4:  DATA 52,03
+02B6:  DATA 52,03
+02B8:  DATA 52,03
+02BA:  DATA 52,03
+02BC:  DATA 52,03
+02BE:  DATA 52,03
+02C0:  DATA 52,03
+02C2:  DATA 52,03
+02C4:  DATA 51,03
+02C6:  DATA 51,03
+02C8:  DATA 51,03
+02CA:  DATA 51,03
+02CC:  DATA 51,03
+02CE:  DATA 50,03
+02D0:  DATA 50,03
+02D2:  DATA 50,03
+02D4:  DATA 4F,03
+02D6:  DATA 4F,03
+02D8:  DATA 4E,03
+02DA:  DATA 4E,03
+02DC:  DATA 4D,03
+02DE:  DATA 4D,03
+02E0:  DATA 4C,03
+02E2:  DATA 4C,03
+02E4:  DATA 4B,03
+02E6:  DATA 4A,03
+02E8:  DATA 4A,03
+02EA:  DATA 49,03
+02EC:  DATA 48,03
+02EE:  DATA 47,03
+02F0:  DATA 46,03
+02F2:  DATA 45,03
+02F4:  DATA 44,03
+02F6:  DATA 43,03
+02F8:  DATA 43,03
+02FA:  DATA 41,03
+02FC:  DATA 40,03
+02FE:  DATA 3F,03
+0300:  DATA 3E,03
+0302:  DATA 3D,03
+0304:  DATA 3C,03
+0306:  DATA 3B,03
+0308:  DATA 39,03
+030A:  DATA 38,03
+030C:  DATA 37,03
+030E:  DATA 35,03
+0310:  DATA 34,03
+0312:  DATA 33,03
+0314:  DATA 31,03
+0316:  DATA 30,03
+0318:  DATA 2E,03
+031A:  DATA 2D,03
+031C:  DATA 2B,03
+031E:  DATA 29,03
+0320:  DATA 28,03
+0322:  DATA 26,03
+0324:  DATA 24,03
+0326:  DATA 23,03
+0328:  DATA 21,03
+032A:  DATA 1F,03
+032C:  DATA 1D,03
+032E:  DATA 1B,03
+0330:  DATA 19,03
+0332:  DATA 18,03
+0334:  DATA 16,03
+0336:  DATA 14,03
+0338:  DATA 12,03
+033A:  DATA 10,03
+033C:  DATA 0D,03
+033E:  DATA 0B,03
+0340:  DATA 09,03
+0342:  DATA 07,03
+0344:  DATA 05,03
+0346:  DATA 03,03
+0348:  DATA 00,03
+034A:  DATA FE,02
+034C:  DATA FC,02
+034E:  DATA F9,02
+0350:  DATA F7,02
+0352:  DATA F5,02
+0354:  DATA F2,02
+0356:  DATA F0,02
+0358:  DATA ED,02
+035A:  DATA EB,02
+035C:  DATA E8,02
+035E:  DATA E5,02
+0360:  DATA E3,02
+0362:  DATA E0,02
+0364:  DATA DD,02
+0366:  DATA DB,02
+0368:  DATA D8,02
+036A:  DATA D5,02
+036C:  DATA D2,02
+036E:  DATA D0,02
+0370:  DATA CD,02
+0372:  DATA CA,02
+0374:  DATA C7,02
+0376:  DATA C4,02
+0378:  DATA C1,02
+037A:  DATA BE,02
+037C:  DATA BB,02
+037E:  DATA B8,02
+0380:  DATA B5,02
+0382:  DATA B2,02
+0384:  DATA AF,02
+0386:  DATA AC,02
+0388:  DATA A8,02
+038A:  DATA A5,02
+038C:  DATA A2,02
+038E:  DATA 9F,02
+0390:  DATA 9B,02
+0392:  DATA 98,02
+0394:  DATA 95,02
+0396:  DATA 91,02
+0398:  DATA 8E,02
+039A:  DATA 8B,02
+039C:  DATA 87,02
+039E:  DATA 84,02
+03A0:  DATA 80,02
+03A2:  DATA 7D,02
+03A4:  DATA 79,02
+03A6:  DATA 76,02
+03A8:  DATA 72,02
+03AA:  DATA 6E,02
+03AC:  DATA 6B,02
+03AE:  DATA 67,02
+03B0:  DATA 63,02
+03B2:  DATA 60,02
+03B4:  DATA 5C,02
+03B6:  DATA 58,02
+03B8:  DATA 54,02
+03BA:  DATA 51,02
+03BC:  DATA 4D,02
+03BE:  DATA 49,02
+03C0:  DATA 45,02
+03C2:  DATA 41,02
+03C4:  DATA 3D,02
+03C6:  DATA 39,02
+03C8:  DATA 35,02
+03CA:  DATA 31,02
+03CC:  DATA 2D,02
+03CE:  DATA 29,02
+03D0:  DATA 25,02
+03D2:  DATA 21,02
+03D4:  DATA 1D,02
+03D6:  DATA 19,02
+03D8:  DATA 15,02
+03DA:  DATA 10,02
+03DC:  DATA 0C,02
+03DE:  DATA 08,02
+03E0:  DATA 04,02
+03E2:  DATA 00,02
+03E4:  DATA FB,01
+03E6:  DATA F7,01
+03E8:  DATA F3,01
+03EA:  DATA EE,01
+03EC:  DATA EA,01
+03EE:  DATA E6,01
+03F0:  DATA E1,01
+03F2:  DATA DD,01
+03F4:  DATA D9,01
+03F6:  DATA D4,01
+03F8:  DATA D0,01
+03FA:  DATA CB,01
+03FC:  DATA C7,01
+03FE:  DATA C2,01
+0400:  DATA BE,01
+0402:  DATA B9,01
+0404:  DATA B4,01
+0406:  DATA B0,01
+0408:  DATA AB,01
+040A:  DATA A7,01
+040C:  DATA A2,01
+040E:  DATA 9D,01
+0410:  DATA 99,01
+0412:  DATA 94,01
+0414:  DATA 8F,01
+0416:  DATA 8B,01
+0418:  DATA 86,01
+041A:  DATA 81,01
+041C:  DATA 7C,01
+041E:  DATA 78,01
+0420:  DATA 73,01
+0422:  DATA 6E,01
+0424:  DATA 69,01
+0426:  DATA 64,01
+0428:  DATA 60,01
+042A:  DATA 5B,01
+042C:  DATA 56,01
+042E:  DATA 51,01
+0430:  DATA 4C,01
+0432:  DATA 47,01
+0434:  DATA 42,01
+0436:  DATA 3D,01
+0438:  DATA 38,01
+043A:  DATA 33,01
+043C:  DATA 2E,01
+043E:  DATA 29,01
+0440:  DATA 24,01
+0442:  DATA 1F,01
+0444:  DATA 1A,01
+0446:  DATA 15,01
+0448:  DATA 10,01
+044A:  DATA 0B,01
+044C:  DATA 06,01
+044E:  DATA 01,01
+0450:  DATA FC,00
+0452:  DATA F7,00
+0454:  DATA F2,00
+0456:  DATA ED,00
+0458:  DATA E8,00
+045A:  DATA E2,00
+045C:  DATA DD,00
+045E:  DATA D8,00
+0460:  DATA D3,00
+0462:  DATA CE,00
+0464:  DATA C9,00
+0466:  DATA C3,00
+0468:  DATA BE,00
+046A:  DATA B9,00
+046C:  DATA B4,00
+046E:  DATA AF,00
+0470:  DATA A9,00
+0472:  DATA A4,00
+0474:  DATA 9F,00
+0476:  DATA 9A,00
+0478:  DATA 94,00
+047A:  DATA 8F,00
+047C:  DATA 8A,00
+047E:  DATA 85,00
+0480:  DATA 7F,00
+0482:  DATA 7A,00
+0484:  DATA 75,00
+0486:  DATA 70,00
+0488:  DATA 6A,00
+048A:  DATA 65,00
+048C:  DATA 60,00
+048E:  DATA 5A,00
+0490:  DATA 55,00
+0492:  DATA 50,00
+0494:  DATA 4B,00
+0496:  DATA 45,00
+0498:  DATA 40,00
+049A:  DATA 3B,00
+049C:  DATA 35,00
+049E:  DATA 30,00
+04A0:  DATA 2B,00
+04A2:  DATA 25,00
+04A4:  DATA 20,00
+04A6:  DATA 1B,00
+04A8:  DATA 15,00
+04AA:  DATA 10,00
+04AC:  DATA 0B,00
+04AE:  DATA 05,00
+04B0:  DATA 00,00
+04B2:  DATA 00,00
+04B4:  DATA 00,00
+04B6:  DATA 00,00
+04B8:  DATA 00,00
+04BA:  DATA 00,00
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(clock=48MHz,crystal=16MHz) 
+....................  
+....................  
+.................... #bit B7=0xF81.7 
+.................... #bit C0=0xF82.0 
+....................  
+....................  
+....................  
+.................... unsigned int16 TBL_POINTER_NEW, TBL_POINTER_OLD, SET_FREQ, TBL_POINTER_SHIFT,step,DUTY_CYCLE; 
+.................... int1 Direction,start; 
+....................                    
+.................... const unsigned int16 sine[512]={ 0, 0, 0, 0, 0,0, 5, 11, 16, 21, 27, 32, 37, 43, 48, 53, 59, 64, 69, 75, 
+.................... 80, 85, 90, 96, 101, 106, 112, 117, 122, 127, 133, 138, 143, 148, 154, 159, 164, 169, 175, 180, 185, 190, 
+.................... 195, 201, 206, 211, 216, 221, 226, 232, 237, 242, 247, 252, 257, 262, 267, 272, 277, 282, 287, 292, 297, 
+.................... 302, 307, 312, 317, 322, 327, 332, 337, 342, 347, 352, 356, 361, 366, 371, 376, 380, 385, 390, 395, 399, 
+.................... 404, 409, 413, 418, 423, 427, 432, 436, 441, 446, 450, 455, 459, 464, 468, 473, 477, 481, 486, 490, 494, 
+.................... 499, 503, 507, 512, 516, 520, 524, 528, 533, 537, 541, 545, 549, 553, 557, 561, 565, 569, 573, 577, 581, 
+.................... 585, 589, 593, 596, 600, 604, 608, 611, 615, 619, 622, 626, 630, 633, 637, 640, 644, 647, 651, 654, 657, 
+.................... 661, 664, 667, 671, 674, 677, 680, 684, 687, 690, 693, 696, 699, 702, 705, 708, 711, 714, 717, 720, 722, 
+.................... 725, 728, 731, 733, 736, 739, 741, 744, 747, 749, 752, 754, 757, 759, 761, 764, 766, 768, 771, 773, 775, 
+.................... 777, 779, 781, 784, 786, 788, 790, 792, 793, 795, 797, 799, 801, 803, 804, 806, 808, 809, 811, 813, 814,  
+.................... 816, 817, 819, 820, 821, 823, 824, 825, 827, 828, 829, 830, 831, 832, 833, 835, 835, 836, 837, 838, 839, 
+.................... 840, 841, 842, 842, 843, 844, 844, 845, 845, 846, 846, 847, 847, 848, 848, 848, 849, 849, 849, 849, 849, 
+.................... 850, 850, 850, 850, 850, 850, 850, 850, 849, 849, 849, 849, 849, 848, 848, 848, 847, 847, 846, 846, 845, 
+.................... 845, 844, 844, 843, 842, 842, 841, 840, 839, 838, 837, 836, 835, 835, 833, 832, 831, 830, 829, 828, 827, 
+.................... 825, 824, 823, 821, 820, 819, 817, 816, 814, 813, 811, 809, 808, 806, 804, 803, 801, 799, 797, 795, 793, 792, 790, 788, 786, 784, 781, 779, 777, 775, 773, 771, 768, 766, 764, 761, 759, 757, 754, 752, 749, 747, 744, 741, 739, 736, 733, 731, 728, 725, 722, 720, 717, 714, 711, 708, 705, 702, 699, 696, 693, 690, 687, 684, 680, 677, 674, 671, 667, 664, 661, 657, 654, 651, 647, 644, 640, 637, 633, 630, 626, 622, 619, 615, 611, 608, 604, 600, 596, 593, 589, 585, 581, 577, 573, 569, 565, 561, 557, 553, 549, 545, 541, 537, 533, 528, 524, 520, 516, 512, 507, 503, 499, 494, 490, 486, 481, 477, 473, 468, 464, 459, 455, 450, 446, 441, 436, 432, 427, 423, 418, 413, 409, 404, 399, 395, 390, 385, 380, 376, 371, 366, 361, 356, 352, 347, 342, 337, 332, 327, 322, 317, 312, 307, 302, 297, 292, 287, 282, 277, 272, 267, 262, 257, 252, 247, 242, 237, 232, 226, 221, 216, 211, 206, 201, 195, 190, 185, 180, 175, 169, 164, 159, 154, 148, 143, 138, 133, 127, 122, 
+.................... 117, 112, 106, 101, 96, 90, 85, 80, 75, 69, 64, 59, 53, 48, 43, 37, 32, 27, 21, 16, 11, 5 , 0, 0, 0, 0, 0, 0}; 
+.................... #INT_TIMER2 
+.................... void timer2_isr() 
+.................... { 
+....................  TBL_POINTER_NEW=TBL_POINTER_OLD +128 ; 
+04BC:  MOVLW  80
+04BE:  ADDWF  1B,W
+04C0:  MOVWF  19
+04C2:  MOVLW  00
+04C4:  ADDWFC 1C,W
+04C6:  MOVWF  1A
+....................  if (TBL_POINTER_NEW < TBL_POINTER_OLD){ 
+04C8:  MOVF   1A,W
+04CA:  SUBWF  1C,W
+04CC:  BNC   04F8
+04CE:  BNZ   04D6
+04D0:  MOVF   1B,W
+04D2:  SUBWF  19,W
+04D4:  BC    04F8
+....................  
+....................  
+....................            if (Direction == 0){ 
+04D6:  BTFSC  25.0
+04D8:  BRA    04EA
+....................  
+....................            
+.................... setup_ccp1(CCP_OFF); 
+04DA:  MOVLW  F0
+04DC:  ANDWF  FBD,F
+.................... setup_ccp2(CCP_PWM); 
+04DE:  BCF    F94.1
+04E0:  BCF    F8B.1
+04E2:  MOVLW  0C
+04E4:  MOVWF  FBA
+....................                 
+....................               Direction = 1; 
+04E6:  BSF    25.0
+....................  
+....................            } 
+04E8:  BRA    04F8
+....................  
+....................            else{ 
+....................            
+....................                  
+....................               
+.................... setup_ccp2(CCP_OFF); 
+04EA:  MOVLW  F0
+04EC:  ANDWF  FBA,F
+.................... setup_ccp1(CCP_PWM); 
+04EE:  BCF    F94.2
+04F0:  BCF    F8B.2
+04F2:  MOVLW  0C
+04F4:  MOVWF  FBD
+....................                 Direction = 0; 
+04F6:  BCF    25.0
+....................  
+....................            } 
+....................  } 
+....................  // TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 11;//200     same as divide by 2048 hence 65536/2048 = 32 repeat 5 times 
+....................     TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 7;                    //  65536/16 
+04F8:  RRCF   1A,W
+04FA:  MOVWF  20
+04FC:  RRCF   19,W
+04FE:  MOVWF  1F
+0500:  RRCF   20,F
+0502:  RRCF   1F,F
+0504:  RRCF   20,F
+0506:  RRCF   1F,F
+0508:  RRCF   20,F
+050A:  RRCF   1F,F
+050C:  RRCF   20,F
+050E:  RRCF   1F,F
+0510:  RRCF   20,F
+0512:  RRCF   1F,F
+0514:  RRCF   20,F
+0516:  RRCF   1F,F
+0518:  MOVLW  01
+051A:  ANDWF  20,F
+....................      DUTY_CYCLE= TBL_POINTER_SHIFT; 
+051C:  MOVFF  20,24
+0520:  MOVFF  1F,23
+....................  
+....................   set_pwm1_duty(sine[DUTY_CYCLE]);  
+0524:  BCF    FD8.0
+0526:  RLCF   23,W
+0528:  MOVWF  02
+052A:  RLCF   24,W
+052C:  MOVWF  03
+052E:  MOVF   02,W
+0530:  MOVFF  03,FF7
+0534:  RCALL  00AE
+0536:  TBLRD*+
+0538:  MOVFF  FF5,03
+053C:  MOVWF  26
+053E:  MOVFF  03,27
+0542:  RRCF   27,F
+0544:  RRCF   26,F
+0546:  RRCF   27,F
+0548:  RRCF   26,F
+054A:  RRCF   27,F
+054C:  MOVFF  26,FBE
+0550:  RRCF   27,F
+0552:  RRCF   27,W
+0554:  ANDLW  30
+0556:  MOVWF  00
+0558:  MOVF   FBD,W
+055A:  ANDLW  CF
+055C:  IORWF  00,W
+055E:  MOVWF  FBD
+....................   set_pwm2_duty(sine[DUTY_CYCLE]); 
+0560:  BCF    FD8.0
+0562:  RLCF   23,W
+0564:  MOVWF  02
+0566:  RLCF   24,W
+0568:  MOVWF  03
+056A:  MOVF   02,W
+056C:  MOVFF  03,FF7
+0570:  RCALL  00AE
+0572:  TBLRD*+
+0574:  MOVFF  FF5,03
+0578:  MOVWF  26
+057A:  MOVFF  03,27
+057E:  RRCF   27,F
+0580:  RRCF   26,F
+0582:  RRCF   27,F
+0584:  RRCF   26,F
+0586:  RRCF   27,F
+0588:  MOVFF  26,FBB
+058C:  RRCF   27,F
+058E:  RRCF   27,W
+0590:  ANDLW  30
+0592:  MOVWF  00
+0594:  MOVF   FBA,W
+0596:  ANDLW  CF
+0598:  IORWF  00,W
+059A:  MOVWF  FBA
+....................      TBL_POINTER_OLD=TBL_POINTER_NEW; 
+059C:  MOVFF  1A,1C
+05A0:  MOVFF  19,1B
+....................      clear_interrupt(INT_TIMER2); 
+05A4:  BCF    F9E.1
+05A6:  BCF    F9E.1
+05A8:  GOTO   0060
+....................  } 
+....................  
+....................  
+.................... void main() 
+05AC:  CLRF   FF8
+05AE:  BCF    FD0.7
+05B0:  BSF    07.7
+05B2:  MOVF   FC1,W
+05B4:  ANDLW  C0
+05B6:  IORLW  0F
+05B8:  MOVWF  FC1
+05BA:  MOVLW  07
+05BC:  MOVWF  FB4
+.................... { 
+.................... set_tris_b(0x00); 
+05BE:  MOVLW  00
+05C0:  MOVWF  F93
+....................  setup_timer_2(T2_DIV_BY_1,233,1); 
+05C2:  IORLW  04
+05C4:  MOVWF  FCA
+05C6:  MOVLW  E9
+05C8:  MOVWF  FCB
+....................   
+.................... setup_ccp1(CCP_OFF); 
+05CA:  MOVLW  F0
+05CC:  ANDWF  FBD,F
+.................... setup_ccp2(CCP_OFF); 
+05CE:  ANDWF  FBA,F
+....................  
+....................   
+.................... enable_interrupts(INT_TIMER2); 
+05D0:  BSF    F9D.1
+.................... enable_interrupts(GLOBAL); 
+05D2:  MOVLW  C0
+05D4:  IORWF  FF2,F
+....................  
+....................   
+....................    while(TRUE) 
+....................    { 
+05D6:  BRA    05D6
+....................  
+....................  
+....................       //TODO: User Code 
+....................    } 
+....................  
+.................... } 
+05D8:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE23   PLL4 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

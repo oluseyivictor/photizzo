@@ -1,0 +1,36 @@
+[PROJECT]
+Target=DFD.hex
+Processor_Text=DSPIC30F2010
+CCSVerions=5.061
+Compiler=PCD
+CCSVersion=5.061
+[Target Data]
+FileList=DFD.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\PHOTIZZO\50khz SPWM\DFD]
+Type=4
+[mru-list]
+1=DFD.c
+[CompilerVersion]
+Fixed=5.061	
+
+[ProjectLog]
+Days=1
+D1=29-05-2018
+D1_L=2
+D1_L1=[42154]Project Opened.
+D1_L2=[45612]Project Closed.
+
+[Opened Files]
+1=DFD.c
+t1=1
+Count=1
+[DFD.c]
+Type=4
+[Units]
+Count=1
+1=DFD (main)
+
+[defines]
+buildcount=1

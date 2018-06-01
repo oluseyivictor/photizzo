@@ -1,0 +1,6 @@
+>>> Warning 202 "fast_sine.c" Line 4(50,58): Variable never used:   SET_FREQ
+>>> Warning 202 "fast_sine.c" Line 4(78,82): Variable never used:   step
+>>> Warning 202 "fast_sine.c" Line 5(16,21): Variable never used:   start
+      Memory usage:   ROM=5%      RAM=2% - 2%
+      0 Errors,  3 Warnings.
+Build Successful.
