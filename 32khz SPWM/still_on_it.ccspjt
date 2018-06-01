@@ -1,0 +1,61 @@
+[PROJECT]
+Target=still_on_it.hex
+Processor_Text=PIC16F876A
+CCSVerions=5.061
+Compiler=PCM
+CCSVersion=5.061
+[Target Data]
+FileList=still_on_it.c
+[Directories]
+Include=
+[C:\Users\OLUSEYI\Desktop\SPWM\still_on_it]
+Type=4
+[mru-list]
+1=still_on_it.c
+
+[ProjectLog]
+Days=3
+D1=28-03-2018
+D1_L=12
+D1_L1=[24214]Project Opened.
+D1_L2=[24220]Started Editing.
+D1_L3=[24658]Stopped Editing.
+D1_L4=[29373]Started Editing.
+D1_L5=[29678]Stopped Editing.
+D1_L6=[37816]Started Editing.
+D1_L7=[38754]Stopped Editing.
+TotalEdit=15
+TotalDebug=0
+D1_E=14
+D1_D=0
+D1_L8=[38940]Project Closed.
+D1_L9=[40205]Project Opened.
+D1_L10=[40209]Started Editing.
+D1_L11=[40269]Stopped Editing.
+D1_L12=[40269]Project Closed.
+D2=30-03-2018
+D2_L=1
+D2_L1=[16762]Project Opened.
+D3=16-04-2018
+D3_L=4
+D3_L1=[41130]Project Opened.
+D3_L2=[41136]Started Editing.
+D3_L3=[41437]Stopped Editing.
+D3_E=1
+D3_D=0
+D3_L4=[45883]Project Closed.
+
+[Opened Files]
+1=still_on_it.c
+t1=1
+Count=2
+2=still_on_it.h
+t2=1
+[still_on_it.c]
+Type=4
+
+[defines]
+buildcount=8
+[Units]
+Count=1
+1=still_on_it (main)

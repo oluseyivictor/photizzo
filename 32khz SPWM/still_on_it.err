@@ -1,0 +1,6 @@
+>>> Warning 202 "still_on_it.c" Line 7(50,58): Variable never used:   SET_FREQ
+>>> Warning 202 "still_on_it.c" Line 7(78,82): Variable never used:   step
+>>> Warning 202 "still_on_it.c" Line 8(16,21): Variable never used:   start
+      Memory usage:   ROM=4%      RAM=7% - 8%
+      0 Errors,  3 Warnings.
+Build Successful.

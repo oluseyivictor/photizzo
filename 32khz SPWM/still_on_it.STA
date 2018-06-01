@@ -1,0 +1,51 @@
+
+ROM used:   339/8192 (4%)
+            339/8192 (4%) including unused fragments
+
+            0.5 Average locations per line
+            12.6 Average locations per statement
+
+RAM used:   26/368 (7%) at main() level
+            28/368 (8%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   77    27 100  still_on_it.c
+    5     0   0  still_on_it.h
+  623     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F876A.h
+----- -----
+  705    27 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0    132  39    0             @const585
+0    123  36    2    422  5.2  timer2_isr
+0     35  10    0    174  2.2  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              27
+    Comments                118
+    Volume (V)              706
+    Difficulty (D)          7.2
+    Effort to implement (E) 5051
+    Time to implement (T)   5 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    67
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00030    45  0  
+00031-007FF   290  1709  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

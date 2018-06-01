@@ -1,0 +1,449 @@
+CCS PCM C Compiler, Version 5.061, 5967               16-Apr-18 11:26
+
+               Filename:   C:\Users\OLUSEYI\Desktop\PHOTIZZO\32khz SPWM\still_on_it.lst
+
+               ROM used:   339 words (4%)
+                           Largest free fragment is 2048
+               RAM used:   26 (7%) at main() level
+                           28 (8%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  01
+0001:  MOVWF  0A
+0002:  GOTO   130
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  MOVLW  8C
+0018:  MOVWF  04
+0019:  BTFSS  00.1
+001A:  GOTO   01D
+001B:  BTFSC  0C.1
+001C:  GOTO   02E
+001D:  MOVF   22,W
+001E:  MOVWF  04
+001F:  MOVF   23,W
+0020:  MOVWF  77
+0021:  MOVF   24,W
+0022:  MOVWF  78
+0023:  MOVF   25,W
+0024:  MOVWF  79
+0025:  MOVF   26,W
+0026:  MOVWF  7A
+0027:  MOVF   20,W
+0028:  MOVWF  0A
+0029:  SWAPF  21,W
+002A:  MOVWF  03
+002B:  SWAPF  7F,F
+002C:  SWAPF  7F,W
+002D:  RETFIE
+002E:  BCF    0A.3
+002F:  BCF    0A.4
+0030:  GOTO   0B5
+.................... #include <still_on_it.h> 
+.................... #include <16F876A.h> 
+.................... //////////// Standard Header file for the PIC16F876A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F876A 
+0031:  BCF    0A.0
+0032:  BCF    0A.1
+0033:  BCF    0A.2
+0034:  ADDWF  02,F
+0035:  RETLW  00
+0036:  RETLW  00
+0037:  RETLW  19
+0038:  RETLW  00
+0039:  RETLW  31
+003A:  RETLW  00
+003B:  RETLW  49
+003C:  RETLW  00
+003D:  RETLW  62
+003E:  RETLW  00
+003F:  RETLW  79
+0040:  RETLW  00
+0041:  RETLW  91
+0042:  RETLW  00
+0043:  RETLW  A8
+0044:  RETLW  00
+0045:  RETLW  BF
+0046:  RETLW  00
+0047:  RETLW  D6
+0048:  RETLW  00
+0049:  RETLW  EC
+004A:  RETLW  00
+004B:  RETLW  01
+004C:  RETLW  01
+004D:  RETLW  16
+004E:  RETLW  01
+004F:  RETLW  2A
+0050:  RETLW  01
+0051:  RETLW  3D
+0052:  RETLW  01
+0053:  RETLW  50
+0054:  RETLW  01
+0055:  RETLW  62
+0056:  RETLW  01
+0057:  RETLW  72
+0058:  RETLW  01
+0059:  RETLW  83
+005A:  RETLW  01
+005B:  RETLW  92
+005C:  RETLW  01
+005D:  RETLW  A0
+005E:  RETLW  01
+005F:  RETLW  AD
+0060:  RETLW  01
+0061:  RETLW  B9
+0062:  RETLW  01
+0063:  RETLW  C4
+0064:  RETLW  01
+0065:  RETLW  CE
+0066:  RETLW  01
+0067:  RETLW  D7
+0068:  RETLW  01
+0069:  RETLW  DE
+006A:  RETLW  01
+006B:  RETLW  E5
+006C:  RETLW  01
+006D:  RETLW  EA
+006E:  RETLW  01
+006F:  RETLW  EF
+0070:  RETLW  01
+0071:  RETLW  F2
+0072:  RETLW  01
+0073:  RETLW  F3
+0074:  RETLW  01
+0075:  RETLW  F4
+0076:  RETLW  01
+0077:  RETLW  F3
+0078:  RETLW  01
+0079:  RETLW  F2
+007A:  RETLW  01
+007B:  RETLW  EF
+007C:  RETLW  01
+007D:  RETLW  EA
+007E:  RETLW  01
+007F:  RETLW  E5
+0080:  RETLW  01
+0081:  RETLW  DE
+0082:  RETLW  01
+0083:  RETLW  D7
+0084:  RETLW  01
+0085:  RETLW  CE
+0086:  RETLW  01
+0087:  RETLW  C4
+0088:  RETLW  01
+0089:  RETLW  B9
+008A:  RETLW  01
+008B:  RETLW  AD
+008C:  RETLW  01
+008D:  RETLW  A0
+008E:  RETLW  01
+008F:  RETLW  92
+0090:  RETLW  01
+0091:  RETLW  83
+0092:  RETLW  01
+0093:  RETLW  72
+0094:  RETLW  01
+0095:  RETLW  62
+0096:  RETLW  01
+0097:  RETLW  50
+0098:  RETLW  01
+0099:  RETLW  3D
+009A:  RETLW  01
+009B:  RETLW  2A
+009C:  RETLW  01
+009D:  RETLW  16
+009E:  RETLW  01
+009F:  RETLW  01
+00A0:  RETLW  01
+00A1:  RETLW  EC
+00A2:  RETLW  00
+00A3:  RETLW  D6
+00A4:  RETLW  00
+00A5:  RETLW  BF
+00A6:  RETLW  00
+00A7:  RETLW  A8
+00A8:  RETLW  00
+00A9:  RETLW  91
+00AA:  RETLW  00
+00AB:  RETLW  79
+00AC:  RETLW  00
+00AD:  RETLW  62
+00AE:  RETLW  00
+00AF:  RETLW  49
+00B0:  RETLW  00
+00B1:  RETLW  31
+00B2:  RETLW  00
+00B3:  RETLW  19
+00B4:  RETLW  00
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(crystal=16000000) 
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+.................... unsigned int16 TBL_POINTER_NEW, TBL_POINTER_OLD, SET_FREQ, TBL_POINTER_SHIFT,step,DUTY_CYCLE; 
+.................... int1 Direction,start; 
+....................                    
+.................... const unsigned int16 sin_table[64]={0, 25, 49, 73, 98, 121, 145, 168, 191, 214, 236, 257, 278, 298, 317, 336, 354, 370,  
+.................... 387, 402, 416, 429, 441, 452, 462, 471, 478, 485, 490, 495, 498, 499, 500, 499, 498, 495, 490, 485, 478, 471, 462, 452, 
+.................... 441, 429, 416, 402, 387, 370, 354, 336, 317, 298, 278, 257, 236, 214, 191, 168, 145, 121, 98, 73, 49, 25}; 
+....................  
+....................  
+.................... #INT_TIMER2 
+.................... void timer2_isr() 
+.................... { 
+....................  TBL_POINTER_NEW=TBL_POINTER_OLD +410 ; 
+00B5:  MOVLW  9A
+00B6:  ADDWF  29,W
+00B7:  MOVWF  27
+00B8:  MOVF   2A,W
+00B9:  MOVWF  28
+00BA:  MOVLW  01
+00BB:  BTFSC  03.0
+00BC:  MOVLW  02
+00BD:  ADDWF  28,F
+....................  if (TBL_POINTER_NEW < TBL_POINTER_OLD){ 
+00BE:  MOVF   28,W
+00BF:  SUBWF  2A,W
+00C0:  BTFSS  03.0
+00C1:  GOTO   0E1
+00C2:  BTFSS  03.2
+00C3:  GOTO   0C8
+00C4:  MOVF   29,W
+00C5:  SUBWF  27,W
+00C6:  BTFSC  03.0
+00C7:  GOTO   0E1
+....................  
+....................  
+....................            if (Direction == 0){ 
+00C8:  BTFSC  33.0
+00C9:  GOTO   0D6
+....................  
+....................            
+.................... setup_ccp1(CCP_OFF); 
+00CA:  MOVLW  F0
+00CB:  ANDWF  17,F
+....................  
+.................... setup_ccp2(CCP_PWM); 
+00CC:  BCF    34.1
+00CD:  MOVF   34,W
+00CE:  BSF    03.5
+00CF:  MOVWF  07
+00D0:  BCF    03.5
+00D1:  BCF    07.1
+00D2:  MOVLW  0C
+00D3:  MOVWF  1D
+....................                 
+....................               Direction = 1; 
+00D4:  BSF    33.0
+....................  
+....................            } 
+00D5:  GOTO   0E1
+....................  
+....................            else{ 
+....................            
+....................                  
+....................               
+.................... setup_ccp2(CCP_OFF); 
+00D6:  MOVLW  F0
+00D7:  ANDWF  1D,F
+....................  
+.................... setup_ccp1(CCP_PWM); 
+00D8:  BCF    34.2
+00D9:  MOVF   34,W
+00DA:  BSF    03.5
+00DB:  MOVWF  07
+00DC:  BCF    03.5
+00DD:  BCF    07.2
+00DE:  MOVLW  0C
+00DF:  MOVWF  17
+....................                 Direction = 0; 
+00E0:  BCF    33.0
+....................  
+....................            } 
+....................  } 
+....................  // TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 11;//200     same as divide by 2048 hence 65536/2048 = 32 repeat 5 times 
+....................     TBL_POINTER_SHIFT= TBL_POINTER_NEW >> 10;                    //  65536/16 
+00E1:  CLRF   2E
+00E2:  RRF    28,W
+00E3:  MOVWF  2D
+00E4:  RRF    2D,F
+00E5:  MOVLW  3F
+00E6:  ANDWF  2D,F
+....................      DUTY_CYCLE= TBL_POINTER_SHIFT; 
+00E7:  MOVF   2E,W
+00E8:  MOVWF  32
+00E9:  MOVF   2D,W
+00EA:  MOVWF  31
+....................  
+....................   set_pwm1_duty(sin_table[DUTY_CYCLE]);  
+00EB:  BCF    03.0
+00EC:  RLF    31,W
+00ED:  MOVWF  79
+00EE:  RLF    32,W
+00EF:  MOVWF  7A
+00F0:  MOVF   79,W
+00F1:  MOVWF  35
+00F2:  INCF   79,W
+00F3:  CALL   031
+00F4:  MOVWF  7A
+00F5:  MOVF   35,W
+00F6:  CALL   031
+00F7:  MOVWF  35
+00F8:  MOVF   7A,W
+00F9:  MOVWF  36
+00FA:  RRF    36,F
+00FB:  RRF    35,F
+00FC:  RRF    36,F
+00FD:  RRF    35,F
+00FE:  RRF    36,F
+00FF:  MOVF   35,W
+0100:  MOVWF  15
+0101:  RRF    36,F
+0102:  RRF    36,W
+0103:  ANDLW  30
+0104:  MOVWF  77
+0105:  MOVF   17,W
+0106:  ANDLW  CF
+0107:  IORWF  77,W
+0108:  MOVWF  17
+....................   set_pwm2_duty(sin_table[DUTY_CYCLE]); 
+0109:  BCF    03.0
+010A:  RLF    31,W
+010B:  MOVWF  79
+010C:  RLF    32,W
+010D:  MOVWF  7A
+010E:  MOVF   79,W
+010F:  MOVWF  35
+0110:  INCF   79,W
+0111:  CALL   031
+0112:  MOVWF  7A
+0113:  MOVF   35,W
+0114:  CALL   031
+0115:  MOVWF  35
+0116:  MOVF   7A,W
+0117:  MOVWF  36
+0118:  RRF    36,F
+0119:  RRF    35,F
+011A:  RRF    36,F
+011B:  RRF    35,F
+011C:  RRF    36,F
+011D:  MOVF   35,W
+011E:  MOVWF  1B
+011F:  RRF    36,F
+0120:  RRF    36,W
+0121:  ANDLW  30
+0122:  MOVWF  77
+0123:  MOVF   1D,W
+0124:  ANDLW  CF
+0125:  IORWF  77,W
+0126:  MOVWF  1D
+....................      TBL_POINTER_OLD=TBL_POINTER_NEW; 
+0127:  MOVF   28,W
+0128:  MOVWF  2A
+0129:  MOVF   27,W
+012A:  MOVWF  29
+....................      clear_interrupt(INT_TIMER2); 
+012B:  BCF    0C.1
+012C:  BCF    0C.1
+012D:  BCF    0A.3
+012E:  BCF    0A.4
+012F:  GOTO   01D
+....................  } 
+....................  
+....................  
+.................... void main() 
+0130:  MOVF   03,W
+0131:  ANDLW  1F
+0132:  MOVWF  03
+0133:  MOVLW  FF
+0134:  MOVWF  34
+0135:  BSF    03.5
+0136:  BSF    1F.0
+0137:  BSF    1F.1
+0138:  BSF    1F.2
+0139:  BCF    1F.3
+013A:  MOVLW  07
+013B:  MOVWF  1C
+013C:  BCF    03.7
+.................... { 
+.................... set_tris_b(0x00); 
+013D:  MOVLW  00
+013E:  MOVWF  06
+.................... set_tris_C(0x00); 
+013F:  MOVWF  07
+0140:  BCF    03.5
+0141:  MOVWF  34
+....................  setup_timer_2(T2_DIV_BY_1,124,1); 
+0142:  MOVWF  78
+0143:  IORLW  04
+0144:  MOVWF  12
+0145:  MOVLW  7C
+0146:  BSF    03.5
+0147:  MOVWF  12
+....................   
+.................... setup_ccp1(CCP_OFF); 
+0148:  MOVLW  F0
+0149:  BCF    03.5
+014A:  ANDWF  17,F
+.................... setup_ccp2(CCP_OFF); 
+014B:  ANDWF  1D,F
+....................  
+....................   
+.................... enable_interrupts(INT_TIMER2); 
+014C:  BSF    03.5
+014D:  BSF    0C.1
+.................... enable_interrupts(GLOBAL); 
+014E:  MOVLW  C0
+014F:  BCF    03.5
+0150:  IORWF  0B,F
+....................  
+....................   
+....................    while(TRUE) 
+....................    { 
+0151:  GOTO   151
+....................  
+....................  
+....................       //TODO: User Code 
+....................    } 
+....................  
+.................... } 
+0152:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
