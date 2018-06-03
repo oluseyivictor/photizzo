@@ -15,7 +15,7 @@
 #define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 
-unsigned char Direction;
+//unsigned char Direction;
 
 const unsigned char Smps_Table[60]={120, 118, 116, 114, 112, 110, 108, 106, 104, 102, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72,
 	              70, 68, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14,
@@ -24,11 +24,25 @@ const unsigned char Smps_Table[60]={120, 118, 116, 114, 112, 110, 108, 106, 104,
 
 uint32_t accumulator = 0;
 int16_t value[6];
-uint8_t count,channel,step = 0;
+uint8_t count,channel,step,duty = 0;
 
+
+	struct {
+		uint8_t b0 : 1;
+		uint8_t b1 : 1;
+		uint8_t b2 : 1;
+		uint8_t b3 : 1;
+		uint8_t b4 : 1;
+		uint8_t b5 : 1;
+		uint8_t b6 : 1;
+		uint8_t b7 : 1;
+} TPort;
+
+#define Direction TPort.b0
+#define Updown TPort.b1
 
 float sensitivity = 0.36786;
-float Batt_Volt, Solar;
+float Batt_Volt, Solar,N_Power,L_Power;
 float current[4];
 /* Static Variables */
 static unsigned char UART_RxBuf[UART_RX_BUFFER_SIZE];
@@ -128,6 +142,7 @@ int TransmitByte_IO( char data,FILE *stream  )
 	UART_TxBuf[tmphead] = data; /* store data in buffer */
 	UART_TxHead = tmphead; /* store new index */
 	UCSR0B |= (1<<UDRIE0); /* enable UDRE interrupt */
+return 0;     // this return value shouldn't be here 
 }
 
 unsigned char DataInReceiveBuffer( void )
@@ -153,7 +168,8 @@ static FILE mystdout = FDEV_SETUP_STREAM(TransmitByte_IO, NULL,_FDEV_SETUP_WRITE
 
 ISR (TIMER1_OVF_vect)
 {
-	if (Direction == 0xFF)
+	//if (Direction == 0xFF)
+	if (Direction == 1)
 	{
 	
 	
@@ -164,7 +180,8 @@ ISR (TIMER1_OVF_vect)
 		 OCR1B = Smps_Table[step];
 		 //set PwM for 75% duty cycle @ 16bit 
 		
-		Direction = 0x00;
+		//Direction = 0x00;
+		Direction = 0;
 	}
 	else{
 		
@@ -172,7 +189,8 @@ ISR (TIMER1_OVF_vect)
 	 //set PWM  for 25% duty cycle @ 16bit
 	 OCR1A = Smps_Table[step];
 	 //set PwM for 75% duty cycle @ 16bit
-		Direction = 0xFF;
+		//Direction = 0xFF;
+		Direction = 1;
 	}
 
 }
@@ -214,15 +232,52 @@ void Read_sample()
 		}
 		value[channel] = (accumulator/ 50);
 	}
-	 current[0] = (value[0]-511)  * sensitivity;
-	 current[1] = (value[1]-511  )* sensitivity;
-	 current[2]=(value[2]-511)* sensitivity;
-	 current[3]= (value[5]-511) * sensitivity;
+	 current[0] = (511-value[0])  * sensitivity;
+	 current[1] = (511-value[1] )* sensitivity;
+	 current[2]=(512-value[2])* sensitivity;
+	 current[3]= (511-value[5]) * sensitivity;
 	
-	 Batt_Volt = (value[3] * 5.01)/ 1024;
-	 Solar = (value[4] * 5.01)/ 1024;
+	 Batt_Volt = (value[3] * 5.00)/ 1024;
+	 Solar = (value[4] * 5.00)/ 1024;
 	 
 }
+
+
+void Current_Feedback()
+{
+	if (current[1] < 10.0)         // Current Sense from SMPS
+	{
+		step++;
+		if (step > 58) step = 58;
+	}
+	else
+	{
+		if (step > 0)
+		{
+			step --;
+		}
+	}
+
+}
+
+void mppt_PO()
+{
+	N_Power = Batt_Volt * current[0];
+	if (N_Power < L_Power) Updown ^= 1;
+	if(!Updown)
+	{
+		duty--;
+		//if (duty < 10) duty = 10;
+	}
+	else
+	{
+		duty++;
+		//if ( duty >= 120) duty = 120;
+	}
+	
+	L_Power = N_Power;
+}
+
 
 
 int main(void)
@@ -241,12 +296,13 @@ int main(void)
 	//set PWM  for 25% duty cycle @ 16bit
 	OCR1B = 0xFF;	
 	
-	OCR2A =0x50;
+	OCR2A =0x50;        //this is the solar mppt duty cycle at 62.5khz ==16000000/256(prescaler)
 	// set PWM for 50% duty cycle
 	
 		// set PWM for 50% duty cycle
 		
- ICR1 = 124;
+ //ICR1 = 124;   //65khz base frequency
+ ICR1 = 177;   //45khz base frequency
  //set top to 16bit
  
 
@@ -276,15 +332,21 @@ int main(void)
     {
  
   if (Sendflag)
+ //  if (1)
   {
 	  printf("%4.2f,%2.2f,%4.2f,%4.2f,%4.2f,%4.2f\n\r", current[0], current[1], current[2], current[3], Batt_Volt, Solar);
 	  Sendflag = 0;
 	  
   }
+  
   Read_sample();
-  step = step + 1;
-  if (step==58) step = 0;
- // _delay_ms(1000);
+Current_Feedback();
+//mppt_PO()
+  
+//step=27;
+ 
+
+_delay_ms(1000);
     }
 }
 
