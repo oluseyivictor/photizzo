@@ -20,6 +20,12 @@
 const unsigned char Smps_Table[60]={120, 118, 116, 114, 112, 110, 108, 106, 104, 102, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72,
 	              70, 68, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14,
 				  12, 10, 8, 6, 4, 2 , 0 };
+				  
+				  
+const unsigned char MPPT_Table[41] = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 
+	26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80};
+				  
+
 
 
 uint32_t accumulator = 0;
@@ -53,6 +59,12 @@ static volatile unsigned char UART_TxHead;
 static volatile unsigned char UART_TxTail;
 volatile uint8_t Sendflag = 0;
 /* Prototypes */
+
+
+#define LED_ON PORTB |= (1<<PORTB3)
+#define LED_OFF PORTB &= ~(1<<PORTB3)
+#define LED_TOGGLE PINB |= (1<<PINB3)
+
 
 
 /* initialize UART */
@@ -196,6 +208,17 @@ ISR (TIMER1_OVF_vect)
 }
 
 
+ISR (TIMER2_COMPA_vect)
+{
+	LED_ON;
+	OCR2B =MPPT_Table[duty] ;
+
+}
+ISR(TIMER2_COMPB_vect)
+{
+	LED_OFF;
+	
+}
 
 
 void adc_init()
@@ -267,22 +290,49 @@ void mppt_PO()
 	if(!Updown)
 	{
 		duty--;
-		//if (duty < 10) duty = 10;
+		if (duty < 5) duty = 5;
 	}
 	else
 	{
 		duty++;
-		//if ( duty >= 120) duty = 120;
+		if ( duty >= 40)  duty=40;
 	}
-	
+
 	L_Power = N_Power;
 }
 
+void PWM1_Init()
+{
+		
+		OCR1A = 0xFF;      //set PWM  for 25% duty cycle @ 16bit
+		OCR1B = 0xFF;	    // set PWM for 50% duty cycle
+		ICR1 = 177;           //45khz base frequency    //set top to 16bit
+		TCCR1A |= (1 << COM1A1) | (1 << COM1B1)|(1 << COM1A0) | (1 << COM1B0) |(1 << WGM11);
+		TCCR1B |= (1 << WGM12)|(1<<WGM13);       //SET as non inverting mode     // set as fast PWM
+		TCCR1B |= (1 << CS10);                 // No prescale and start PWM2
+		TIMSK1 |= (1<<TOIE1);               //enable timer 1 overflow interrupt
+}
 
+void PWM2_Init(uint16_t freq)
+{
+
+	TCCR2A |= (1 << WGM21);
+	// Set to CTC Mode
+
+	TIMSK2 |= (1 << OCIE2A)|(1 << OCIE2B);
+	//Set interrupt on compare match
+
+	TCCR2B |= (1 << CS21);
+	// set prescaler to 64 and starts PWM
+
+	OCR2A = freq;
+	
+}
 
 int main(void)
 {
-	DDRB |= (1<<DDB1)|(1<<DDB0)|(1<<DDB2)|(1<<DDB3);
+	duty = 34;
+	DDRB |= (1<<DDB1)|(1<<DDB0)|(1<<DDB2)|(1<<DDB3)| (1<<DDB5);
 	DDRD |= (1<<DDD6)|(1<<DDD5)|(1<<DDD3);
 	
 	//PORTB &= ~(1<<PORTB0);
@@ -290,40 +340,9 @@ int main(void)
 	 stdout = &mystdout;
 	
 	adc_init();
+     PWM2_Init(82);                           // OCR2A =(F_CPU/(freq * 8)-1);
+	 PWM1_Init();
 
-	
-	OCR1A = 0xFF;
-	//set PWM  for 25% duty cycle @ 16bit
-	OCR1B = 0xFF;	
-	
-	OCR2A =0x50;        //this is the solar mppt duty cycle at 62.5khz ==16000000/256(prescaler)
-	// set PWM for 50% duty cycle
-	
-		// set PWM for 50% duty cycle
-		
- //ICR1 = 124;   //65khz base frequency
- ICR1 = 177;   //45khz base frequency
- //set top to 16bit
- 
-
- 
- 
- TCCR1A |= (1 << COM1A1) | (1 << COM1B1)|(1 << COM1A0) | (1 << COM1B0) |(1 << WGM11);
- TCCR1B |= (1 << WGM12)|(1<<WGM13);
- //SET as non inverting mode   // set as fast PWM
-
- 
-	// set none-inverting mode // set fast PWM Mode
-	TCCR2A |= (1<<WGM20)|(1<<WGM21)|(1<<COM2A1);
-	
-	
-	 TCCR2B |= (1 << CS20);
-	 // No prescale and starts PWM1
-	 TCCR1B |= (1 << CS10);
-	 // No prescale and start PWM2
-	 
-	  
-	  TIMSK1 |= (1<<TOIE1);   //enable timer 1 overflow interrupt
 	 sei();                          //enable global interrupt
 	
 	
@@ -331,8 +350,8 @@ int main(void)
     while (1) 
     {
  
-  if (Sendflag)
- //  if (1)
+  //if (Sendflag)
+  if (1)
   {
 	  printf("%4.2f,%2.2f,%4.2f,%4.2f,%4.2f,%4.2f\n\r", current[0], current[1], current[2], current[3], Batt_Volt, Solar);
 	  Sendflag = 0;
@@ -341,7 +360,7 @@ int main(void)
   
   Read_sample();
 Current_Feedback();
-//mppt_PO()
+//mppt_PO();
   
 //step=27;
  
